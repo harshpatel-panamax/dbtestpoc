@@ -1,6 +1,7 @@
 package com.panamax.dbtestpoc;
 
 import org.h2.tools.RunScript;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,12 +13,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class H2DB {
     private final String url;
-    private List<Connection> connections = new CopyOnWriteArrayList<>();
+    private final List<Connection> connections = new CopyOnWriteArrayList<>();
 
     public H2DB(String url) {
         this.url = url;
@@ -35,7 +37,7 @@ public class H2DB {
     public H2DB schema(String s) {
         try {
             URL resource = H2DB.class.getClassLoader().getResource(s);
-            URI uri = resource.toURI();
+            URI uri = Objects.requireNonNull(resource).toURI();
             RunScript.execute(connection(), Files.newBufferedReader(Paths.get(uri)));
         } catch (URISyntaxException | IOException | SQLException e) {
             throw new RuntimeException(e);
@@ -62,13 +64,13 @@ public class H2DB {
             } catch (SQLException e) {
                 return true;
             }
-        }).forEach(connection -> closeQuietly(connection));
+        }).forEach(this::closeQuietly);
     }
 
     private void closeQuietly(Connection connection) {
         try {
             connection.close();
-        } catch (SQLException e) {
+        } catch (SQLException ignored) {
         }
     }
 }
