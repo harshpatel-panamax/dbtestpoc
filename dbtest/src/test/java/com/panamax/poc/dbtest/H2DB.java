@@ -1,7 +1,6 @@
-package com.panamax.dbtestpoc;
+package com.panamax.poc.dbtest;
 
 import org.h2.tools.RunScript;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.io.IOException;
 import java.net.URI;

@@ -1,4 +1,4 @@
-package com.panamax.dbtestpoc;
+package com.panamax.poc.dbtest;
 
 
 import org.junit.jupiter.api.AfterAll;
@@ -17,6 +17,7 @@ import java.sql.Statement;
 @Testcontainers
 public class TestContainerPocTest {
 
+    @SuppressWarnings("rawtypes")
     @Container
     private static final JdbcDatabaseContainer MY_SQL_CONTAINER = new MySQLContainer("mysql:8.0.30")
             .withInitScript("schema.sql");

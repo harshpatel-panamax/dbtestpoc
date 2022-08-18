@@ -1,4 +1,4 @@
-package com.panamax.dbtestpoc;
+package com.panamax.poc.dbtest;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
