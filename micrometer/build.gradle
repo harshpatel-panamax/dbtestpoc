@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'org.panamax.poc'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'io.micrometer:micrometer-registry-jmx:1.9.3'
+    implementation 'io.lettuce:lettuce-core:6.2.0.RELEASE'
+    implementation 'com.esotericsoftware:kryo:5.3.0'
+    implementation 'io.zipkin.brave:brave:5.13.11'
+
+    // https://mvnrepository.com/artifact/io.zipkin.brave/brave-instrumentation-httpclient
+    implementation 'io.zipkin.brave:brave-instrumentation-httpclient:5.13.11'
+
+
+    // https://mvnrepository.com/artifact/io.zipkin.reporter2/zipkin-reporter-brave
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave:2.16.3'
+// https://mvnrepository.com/artifact/io.zipkin.reporter2/zipkin-sender-urlconnection
+    implementation 'io.zipkin.reporter2:zipkin-sender-urlconnection:2.16.3'
+
+
+
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3'
+
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}

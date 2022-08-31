@@ -1,4 +1,6 @@
 rootProject.name = 'dbtestpoc'
 include 'exceptionhandling'
 include 'dbtest'
+include 'redisasyncupdate'
+include 'micrometer'
 

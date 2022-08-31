@@ -1,0 +1,60 @@
+<redis>
+    <cluster>
+        <connection-timeout-sec>10</connection-timeout-sec>
+        <servers>
+            <server>
+                <ip>10.30.150.217</ip>
+                <port>8000</port>
+            </server>
+            <server>
+                <ip>10.30.150.218</ip>
+                <port>8000</port>
+            </server>
+            <server>
+                <ip>10.30.150.219</ip>
+                <port>8000</port>
+            </server>
+        </servers>
+    </cluster>
+
+    <mircometer>
+        <registries>
+            <registry>log</registry>
+            <registry>jmx</registry>
+        </registries>
+    </mircometer>
+
+    <lettuce>
+        <matrix>
+            <enabled>true</enabled>
+            <histogram>false</histogram>
+            <local-socket-distinction>false</local-socket-distinction>
+            <max-latency-ms>5000</max-latency-ms>
+            <min-latency-ms>1</min-latency-ms>
+            <tags>
+                <tag>
+                    <key>1</key>
+                    <value>one</value>
+                </tag>
+                <tag>
+                    <key>2</key>
+                    <value>two</value>
+                </tag>
+            </tags>
+            <latency>
+                <percentile>50</percentile>
+                <percentile>90</percentile>
+                <percentile>95</percentile>
+                <percentile>99</percentile>
+                <percentile>99.9</percentile>
+            </latency>
+        </matrix>
+        <tracing/>
+    </lettuce>
+
+    <serialization>
+        <max-buffer-size>
+            1024
+        </max-buffer-size>
+    </serialization>
+</redis>
